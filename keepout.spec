@@ -1,9 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+
 block_cipher = None
 
+
 a = Analysis(['keepout\\keepout.py'],
-             pathex=['.', '.\\keepout'],
+             pathex=['.\\keepout'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -20,25 +22,20 @@ pyz = PYZ(a.pure, a.zipped_data,
 
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
           name='keepout',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          upx_exclude=[],
+          runtime_tmpdir=None,
           console=False,
           disable_windowed_traceback=False,
           target_arch=None,
+          icon='keepout.ico',
           codesign_identity=None,
-          uac_admin=True,
-          #icon='keepout.ico'
           entitlements_file=None )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               upx_exclude=[],
-               name='keepout')
