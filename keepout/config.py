@@ -32,6 +32,9 @@ def get_config() -> dict:
         os.makedirs(CONFIG_PATH, exist_ok=True)
         Path(CONFIG_FILE).touch()
         with open(CONFIG_FILE, "w") as f:
-            json.dump(DEFAULT_CONFIG, f)
+            json.dump(DEFAULT_CONFIG, f, indent=4)
+
+        # First execution, just create the config file and exit
+        exit()
 
     return DEFAULT_CONFIG
