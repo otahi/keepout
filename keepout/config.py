@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 import json
 
 APP_DIR = os.getenv('APPDATA')
@@ -35,6 +36,6 @@ def get_config() -> dict:
             json.dump(DEFAULT_CONFIG, f, indent=4)
 
         # First execution, just create the config file and exit
-        exit()
+        sys.exit(0)
 
     return DEFAULT_CONFIG
